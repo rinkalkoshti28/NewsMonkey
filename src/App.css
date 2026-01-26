@@ -1,8 +1,5 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+@import "tailwindcss";
+
 header {
   display: flex;
   justify-content: start;
@@ -20,6 +17,9 @@ header nav ul {
   align-items: center;
   gap: 1.5rem;
 }
+
+
+
 /* #root {
   max-width: 1280px;
   margin: 0 auto;
