@@ -7,7 +7,7 @@ export class Navbar extends Component {
       <>
         <header>
             <div className="logo">
-                <h2>NewMonkey</h2>
+                <h2 className="text-xl bg-red-600 px-2 py-1">NewMonkey</h2>
             </div>
             <nav>
                 <ul>
