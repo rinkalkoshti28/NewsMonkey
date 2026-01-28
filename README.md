@@ -1,16 +1,77 @@
-# React + Vite
+# 📰 NewsMonkey
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern News Application built with React and Tailwind CSS that fetches real-time news from NewsAPI and displays them in a clean, responsive card-based UI.
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 🔥 Latest news fetched from **NewsAPI**
+- 🗂️ News displayed as **responsive cards**
+- 💻 Fully Responsive design (mobile, tablet, and desktop)
+-  Fast and lightweight UI using Tailwind CSS
+- 🌐 Category based news 
 
-## React Compiler
+## 🛠️ Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Frontend**: React
+- **Styling**: Tailwind CSS
+- **API**: [NewsAPI.org](https://newsapi.org/)
+- **HTTP Requests**: Fetch API / Axios
 
-## Expanding the ESLint configuration
+## Installation Setup
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Follow these steps to run the project locally:
+
+1️⃣ Clone the repository
+
+```bash
+git clone https://github.com/rinkalkoshti28/NewsMonkey.git
+```
+
+2️⃣ Navigate to the project folder
+
+```bash
+cd newsmonkey
+```
+
+3️⃣ Install dependencies
+
+```bash
+npm install
+```
+
+4️⃣ Get your NewsAPI key
+
+- Go to 👉 https://newsapi.org/
+
+- Sign up and generate your API key
+
+5️⃣ Create .env file
+
+```bash
+NEWS_API_KEY=your_api_key_here
+```
+6️⃣ Start the development server
+
+```bash
+npm run dev
+```
+
+📁 Project Structure
+
+```bash
+src/
+|--- components/
+|    |--- Navbar.jsx/
+|    |--- News.jsx/
+|    |--- NewsItem.jsx/
+|--- App.css/
+|--- App.jsx/
+|--- main.jsx/
+```
+
+## 📄 Licence
+This project is licensed under the MIT License.
+
+## 👩‍💻 Author
+
+Rinkal koshti
