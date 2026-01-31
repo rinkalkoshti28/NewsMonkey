@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import NewsItem from "./NewsItem";
+import Spinner from "./Spinner";
 
 export class News extends Component {
   constructor() {
@@ -8,12 +9,14 @@ export class News extends Component {
       articles: [],
       page: 1,
       totalResults: 0,
+      loading: false,
     };
   }
 
   fetchNews = async (page) => {
     console.log("Fetch called");
-    let url = `https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=cc5029fa80c446fc9d957ee7b41ab7b9&page=${page}&pageSize=${this.props.pageSize}`;
+    let url = `https://newsapi.org/v2/top-headlines?country=us&apiKey=cc5029fa80c446fc9d957ee7b41ab7b9&page=${page}&pageSize=${this.props.pageSize}`;
+    this.setState({loading: true});
     let data = await fetch(url);
     let parsedData = await data.json();
     console.log(parsedData);
@@ -23,6 +26,7 @@ export class News extends Component {
       articles: parsedData.articles || [],
       totalResults: parsedData.totalResults || 0,
       page: page, 
+      loading: false
     });
   }
 
@@ -57,8 +61,9 @@ export class News extends Component {
           <h1 className="text-2xl font-medium mb-5 text-center">
             NewsMonkey - Top Headlines
           </h1>
+          {this.state.loading && <Spinner />}
           <div className="w-full mx-auto flex flex-wrap gap-15 justify-center items-center">
-            {this.state.articles.map((element, index) => {
+            {!this.state.loading && this.state.articles.map((element, index) => {
                 return (<NewsItem
                   key={element.url || index}
                   title={element.title}
