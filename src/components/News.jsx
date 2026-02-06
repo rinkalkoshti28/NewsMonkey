@@ -1,21 +1,40 @@
 import React, { Component } from "react";
 import NewsItem from "./NewsItem";
 import Spinner from "./Spinner";
+import PropTypes, { string } from 'prop-types'
 
 export class News extends Component {
-  constructor() {
-    super();
+
+  static defaultProps = {
+    country: 'us',
+    pageSize: 3,
+    category: 'general',
+  }
+
+  static propTypes = {
+    country: PropTypes.string,
+    pageSize: PropTypes.number,
+    category: PropTypes.string,
+  }
+
+  capitalizeFirstLetter = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
+  constructor(props) {
+    super(props);
     this.state = {
       articles: [],
       page: 1,
       totalResults: 0,
       loading: false,
     };
+    document.title = `${this.capitalizeFirstLetter(this.props.category)} - NewsMonkey`;
   }
 
   fetchNews = async (page) => {
     console.log("Fetch called");
-    let url = `https://newsapi.org/v2/top-headlines?country=us&apiKey=cc5029fa80c446fc9d957ee7b41ab7b9&page=${page}&pageSize=${this.props.pageSize}`;
+    let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${this.props.apiKey}&page=${page}&pageSize=${this.props.pageSize}`;
     this.setState({loading: true});
     let data = await fetch(url);
     let parsedData = await data.json();
@@ -57,9 +76,9 @@ export class News extends Component {
   render() {
     return (
       <>
-        <div className="w-full overflow-x-hidden my-7 px-30">
+        <div className="w-full overflow-x-hidden px-5 my-7 lg:px-30">
           <h1 className="text-2xl font-medium mb-5 text-center">
-            NewsMonkey - Top Headlines
+            NewsMonkey - Top {this.capitalizeFirstLetter(this.props.category)} Headlines
           </h1>
           {this.state.loading && <Spinner />}
           <div className="w-full mx-auto flex flex-wrap gap-15 justify-center items-center">
@@ -70,23 +89,25 @@ export class News extends Component {
                   description={element.description}
                   imageUrl={element.urlToImage}
                   newsUrl={element.url}
+                  author={element.author}
+                  date={element.publishedAt}
                 />);
             })}
           </div>
-          <div className="flex justify-between mt-2">
+          <div className="flex justify-between mt-2 ">
             <button
               disabled={this.state.page <= 1}
-              className="bg-red-600 px-4 py-2 rounded-3xl text-white mt-2"
+              className="bg-red-600 px-4 py-2 text-white mt-2 disabled:opacity-50 disabled:cursor-not-allowed"
               onClick={this.handlePrevClick}
             >
-              &larr;
+              &larr; Previous
             </button>
             <button
               disabled={this.state.page >= Math.ceil(this.state.totalResults / this.props.pageSize)}
-              className="bg-red-600 px-4 py-2 rounded-3xl text-white mt-2"
+              className="bg-red-600 px-4 py-2 text-white mt-2 disabled:opacity-50 disabled:cursor-not-allowed"
               onClick={this.handleNextClick}
             >
-              &rarr;
+              Next &rarr;
             </button>
           </div>
         </div>
