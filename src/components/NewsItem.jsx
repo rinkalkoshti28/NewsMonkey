@@ -7,6 +7,10 @@ export class NewsItem extends Component {
       <>
         <div className="card w-90 h-110 p-4 shadow-xl relative">
           <img src= {imageUrl ? imageUrl : "https://wpengine.com/wp-content/uploads/2021/05/optimize-images-1024x681.jpg"}
+          onError={(e) => {
+            // e.target.onerror = null; // Prevents infinite loop if the fallback image also fails to load
+            e.target.src = "https://wpengine.com/wp-content/uploads/2021/05/optimize-images-1024x681.jpg"; // Fallback image URL
+          }}
           alt={title ? title : "book image"} referrerPolicy="no-referrer" className="m-auto object-cover w-100 h-50" />
           <div className="px-3 ">
             <h3 className="font-bold my-2 w-full h-10">{title ? title.slice(0, 55) + "..." : "No title available"}</h3>
