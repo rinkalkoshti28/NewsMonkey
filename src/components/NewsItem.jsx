@@ -1,11 +1,10 @@
-import React, { Component } from "react";
+import React from "react";
 
-export class NewsItem extends Component {
-  render() {
-    let { title, description, imageUrl, newsUrl, author } = this.props;
-    return (
-      <>
-        <div className="card w-90 h-110 p-4 shadow-xl relative">
+const NewsItem = (props) => {
+  let { title, description, imageUrl, newsUrl, author } = props;
+  return (
+    <>
+      <div className="card w-90 h-110 p-4 shadow-xl relative">
           <img src= {imageUrl ? imageUrl : "https://wpengine.com/wp-content/uploads/2021/05/optimize-images-1024x681.jpg"}
           onError={(e) => {
             // e.target.onerror = null; // Prevents infinite loop if the fallback image also fails to load
@@ -27,6 +26,5 @@ export class NewsItem extends Component {
       </>
     );
   }
-}
 
 export default NewsItem;

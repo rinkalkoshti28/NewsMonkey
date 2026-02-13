@@ -1,13 +1,13 @@
-import { Component } from 'react'
+import loading from '../assets/loading.gif';
 
-export default class Spinner extends Component {
-  render() {
+const Spinner = () => {
     return (
       <>
         <div className='w-full flex justify-center items-center my-5'>
-            <img src="public/loading.gif" alt="Loading..." />
+            <img src={loading} alt="Loading..." />
         </div>
       </>
     )
-  }
 }
+
+export default Spinner;

@@ -2,12 +2,11 @@ import React, { Component } from 'react'
 import { MdMenu } from 'react-icons/md';
 import {Link} from 'react-router-dom' 
 
-export class Navbar extends Component {
+const Navbar = (props) => {
 
-  render() {
     return (
       <>
-        <header className='flex justify-between md:justify-start md:gap-5 items-center p-4 bg-[#3a3a3a] text-white'>
+        <header className='flex justify-between md:justify-start md:gap-5 items-center p-4 bg-[#3a3a3a] text-white fixed top-0 left-0 right-0 z-10'>
             <div className="logo">
                 <Link className="text-xl bg-red-600 px-2 py-1" to="/">NewMonkey</Link>
             </div>
@@ -28,6 +27,5 @@ export class Navbar extends Component {
       </>
     )
   }
-}
 
 export default Navbar
