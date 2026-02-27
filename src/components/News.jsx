@@ -19,7 +19,7 @@ const News = (props) => {
   const fetchNews = async () => {
     console.log("Fetch called");
     props.setProgress(0);
-    let url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apiKey}&page=${page}&pageSize=${props.pageSize}`;
+    let url = `https://gnews.io/api/v4/top-headlines?category=${props.category}&lang=en&country=${props.country}&max=10&apikey=${props.apiKey}&page=${page+1}&pageSize=${props.pageSize}`;
     setLoading(true);
     let data = await fetch(url);
     props.setProgress(30);
@@ -37,7 +37,7 @@ const News = (props) => {
   }, []);
 
   const fetchMoreData = async () => {
-    let url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apiKey}&page=${page+1}&pageSize=${props.pageSize}`;
+    let url = `https://gnews.io/api/v4/top-headlines?category=${props.category}&lang=en&country=${props.country}&max=10&apikey=${props.apiKey}&page=${page+1}&pageSize=${props.pageSize}`;
     setPage(page + 1);
     let data = await fetch(url);
     let parsedData = await data.json();
@@ -71,7 +71,7 @@ const News = (props) => {
                       key={element.url + index}
                       title={element.title}
                       description={element.description}
-                      imageUrl={element.urlToImage}
+                      imageUrl={element.image}
                       newsUrl={element.url}
                       author={element.author}
                       date={element.publishedAt}
