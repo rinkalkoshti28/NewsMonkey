@@ -34,27 +34,7 @@ const News = (props) => {
   useEffect(() => {
     document.title = `${capitalizeFirstLetter(props.category)} - NewsMonkey`;
     fetchNews();
-  }, [])
-
-
-  // handlePrevClick = async () => {
-  //   if(this.state.page > 1) {
-  //     const prevPage = this.state.page - 1;
-  //     this.setState({page: prevPage});
-  //     console.log("Previous");
-  //     this.fetchNews(prevPage);
-  //   }
-  // };
-
-  // handleNextClick = async () => {
-  //   console.log("Next");
-  //   const totalPages = Math.ceil(this.state.totalResults / this.props.pageSize);
-  //   if(this.state.page < totalPages) {
-  //     const nextPage = this.state.page + 1;
-  //     this.setState({page: nextPage});
-  //     this.fetchNews(nextPage);
-  //   }
-  // };
+  }, []);
 
   const fetchMoreData = async () => {
     let url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apiKey}&page=${page+1}&pageSize=${props.pageSize}`;
@@ -82,10 +62,9 @@ const News = (props) => {
             dataLength={articles.length}
             next={fetchMoreData}
             hasMore={hasMore}
-            // hasMore={articles.length < totalResults}
             loader={articles.length > 0 && <Spinner />}
           >
-              <div className="w-full mx-auto flex flex-wrap gap-15 justify-center items-center" >
+              <div className="w-full flex flex-wrap gap-15 justify-center md:justify-start items-center" >
                 {articles.map((element, index) => {
                   return (
                     <NewsItem
@@ -102,22 +81,6 @@ const News = (props) => {
               </div>
           </InfiniteScroll>
         </div>
-        {/* <div className="flex justify-between mt-2 ">
-            <button
-              disabled={this.state.page <= 1}
-              className="bg-red-600 px-4 py-2 text-white mt-2 disabled:opacity-50 disabled:cursor-not-allowed"
-              onClick={this.handlePrevClick}
-            >
-              &larr; Previous
-            </button>
-            <button
-              disabled={this.state.page >= Math.ceil(this.state.totalResults / this.props.pageSize)}
-              className="bg-red-600 px-4 py-2 text-white mt-2 disabled:opacity-50 disabled:cursor-not-allowed"
-              onClick={this.handleNextClick}
-            >
-              Next &rarr;
-            </button>
-          </div> */}
       </>
     );
   }

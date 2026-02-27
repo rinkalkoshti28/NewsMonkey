@@ -1,23 +1,5 @@
 @import "tailwindcss";
 
-/* header {
-  display: flex;
-  justify-content: start;
-  align-items: center;
-  border: 1px solid black;
-  padding: 1rem 2.5rem;
-  gap: 1.75rem;
-  background-color: rgba(70, 69, 69, 0.993);
-  color: white;
-} */
-
-/* header nav ul {
-  list-style: none;
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-} */
-
 button {
   cursor: pointer;
 }
