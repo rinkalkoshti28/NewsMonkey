@@ -7,7 +7,7 @@ A modern News Application built with React and Tailwind CSS that fetches real-ti
 - 🔥 Latest news fetched from **NewsAPI**
 - 🗂️ News displayed as **responsive cards**
 - 💻 Fully Responsive design (mobile, tablet, and desktop)
--  Fast and lightweight UI using Tailwind CSS
+- ✔️ Fast and lightweight UI using Tailwind CSS
 - 🌐 Category based news 
 
 ## 🛠️ Tech Stack
