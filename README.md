@@ -75,3 +75,7 @@ This project is licensed under the MIT License.
 ## 👩‍💻 Author
 
 Rinkal koshti
+
+For any query or feedback contact me at:
+
+- Email: rinkalkoshti2004@gmail.com
