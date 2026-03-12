@@ -19,7 +19,8 @@ const News = (props) => {
   const fetchNews = async () => {
     console.log("Fetch called");
     props.setProgress(0);
-    let url = `https://gnews.io/api/v4/top-headlines?category=${props.category}&lang=en&country=${props.country}&max=10&apikey=${props.apiKey}&page=${page+1}&pageSize=${props.pageSize}`;
+    // let url = `https://gnews.io/api/v4/top-headlines?category=${props.category}&lang=en&country=${props.country}&max=10&apikey=${props.apiKey}&page=${page+1}&pageSize=${props.pageSize}`;
+    let url = `http://localhost:5000/api/news/category/${props.category}`;
     setLoading(true);
     let data = await fetch(url);
     props.setProgress(30);
@@ -37,7 +38,8 @@ const News = (props) => {
   }, []);
 
   const fetchMoreData = async () => {
-    let url = `https://gnews.io/api/v4/top-headlines?category=${props.category}&lang=en&country=${props.country}&max=10&apikey=${props.apiKey}&page=${page+1}&pageSize=${props.pageSize}`;
+    // let url = `https://gnews.io/api/v4/top-headlines?category=${props.category}&lang=en&country=${props.country}&max=10&apikey=${props.apiKey}&page=${page+1}&pageSize=${props.pageSize}`;
+    let url = `http://localhost:5000/api/news/category/${props.category}`;
     setPage(page + 1);
     let data = await fetch(url);
     let parsedData = await data.json();
@@ -54,7 +56,7 @@ const News = (props) => {
       <>
         <div className="w-full overflow-auto px-5 py-10 my-7 lg:px-30">
           <h1 className="text-2xl font-medium my-3 text-center">
-            NewsMonkey - Top {capitalizeFirstLetter(props.category)}{" "}
+            NewsApp - Top {capitalizeFirstLetter(props.category)}{" "}
             Headlines
           </h1>
           {articles.length === 0 && <Spinner />}
@@ -71,9 +73,9 @@ const News = (props) => {
                       key={element.url + index}
                       title={element.title}
                       description={element.description}
-                      imageUrl={element.image}
+                      imageUrl={element.urlToImage}
                       newsUrl={element.url}
-                      author={element.author}
+                      author={element.source.name}
                       date={element.publishedAt}
                     />
                   );
