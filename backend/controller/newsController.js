@@ -6,7 +6,7 @@ const getNewsByCategory = async (req, res) => {
     try {
         const category = req.params.category;
         let pageSize = 10;
-        const url = `https://newsapi.org/v2/top-headlines?country=us&category=${category}&apiKey=${process.env.NEWS_API_KEY}`;
+        const url = `${process.env.NEWS_API_KEY}/news?category=${category}`;
         const response = await axios.get(url);
         res.json(response.data);
     } catch (error) {

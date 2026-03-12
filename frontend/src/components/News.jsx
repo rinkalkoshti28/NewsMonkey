@@ -20,7 +20,7 @@ const News = (props) => {
     console.log("Fetch called");
     props.setProgress(0);
     // let url = `https://gnews.io/api/v4/top-headlines?category=${props.category}&lang=en&country=${props.country}&max=10&apikey=${props.apiKey}&page=${page+1}&pageSize=${props.pageSize}`;
-    let url = `http://localhost:5000/api/news/category/${props.category}`;
+    let url = `https://news-backend-nlnb.onrender.com/api/news/category/${props.category}`;
     setLoading(true);
     let data = await fetch(url);
     props.setProgress(30);
@@ -39,7 +39,7 @@ const News = (props) => {
 
   const fetchMoreData = async () => {
     // let url = `https://gnews.io/api/v4/top-headlines?category=${props.category}&lang=en&country=${props.country}&max=10&apikey=${props.apiKey}&page=${page+1}&pageSize=${props.pageSize}`;
-    let url = `http://localhost:5000/api/news/category/${props.category}`;
+    let url = `https://news-backend-nlnb.onrender.com/api/news/category/${props.category}`;
     setPage(page + 1);
     let data = await fetch(url);
     let parsedData = await data.json();
