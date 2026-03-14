@@ -74,7 +74,7 @@ const News = (props) => {
                       imageUrl={element.urlToImage}
                       newsUrl={element.url}
                       author={element.source.name}
-                      date={element.publishedAt}
+                      // date={element.publishedAt}
                     />
                   );
                 })}

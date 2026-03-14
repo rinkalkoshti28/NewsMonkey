@@ -4,7 +4,7 @@ require('dotenv').config();
 
 const getNewsByCategory = async (req, res) => {
     try {
-        const category = req.query.category || 'general';
+        const category = req.params.category || 'general';
         const url = `https://newsapi.org/v2/top-headlines?country=us&category=${category}&apiKey=${process.env.NEWS_API_KEY}`;
         const response = await axios.get(url);
         res.json(response.data);
