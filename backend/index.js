@@ -6,7 +6,7 @@ const newsRoute = require('./routes/newsRoutes');
 const app = express();
 
 app.use(cors({
-    origin: 'https://newsparks.netlify.app/',
+    origin: 'https://newsparks.netlify.app',
 }));
 app.use(express.json());
 
