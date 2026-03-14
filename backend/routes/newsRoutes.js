@@ -3,6 +3,6 @@ const router = express.Router();
 
 const { getNewsByCategory } = require('../controller/newsController');
 
-router.get("/api/news/:category", getNewsByCategory);
+router.get("/:category", getNewsByCategory);
 
 module.exports = router;
