@@ -12,6 +12,10 @@ app.use(express.json());
 
 app.use("/api/news", newsRoute);
 
+app.get("/", (req, res) => {
+    res.send("Welcome to the news API");
+});
+
 const PORT = 5000;
 
 app.listen(PORT, () => {
