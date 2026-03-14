@@ -19,7 +19,7 @@ const News = (props) => {
   const fetchNews = async () => {
     console.log("Fetch called");
     props.setProgress(0);
-    let url = `https://news-backend-nlnb.onrender.com/api/news/category/${props.category}`;
+    let url = `https://news-backend-nlnb.onrender.com/api/news/${props.category}`;
     setLoading(true);
     let data = await fetch(url);
     props.setProgress(30);
@@ -37,7 +37,7 @@ const News = (props) => {
   }, []);
 
   const fetchMoreData = async () => {
-    let url = `https://news-backend-nlnb.onrender.com/api/news/category/${props.category}`;
+    let url = `https://news-backend-nlnb.onrender.com/api/news/${props.category}`;
     setPage(page + 1);
     let data = await fetch(url);
     let parsedData = await data.json();
